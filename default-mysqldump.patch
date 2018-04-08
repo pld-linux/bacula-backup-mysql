@@ -1,0 +1,22 @@
+--- bacula-backup-mysql-0.8/README.pod~	2016-05-30 11:25:11.000000000 +0200
++++ bacula-backup-mysql-0.8/README.pod	2018-04-08 08:26:43.742397366 +0200
+@@ -42,7 +42,7 @@
+ backup; any C<exclude_database> options will reduce this list.
+ 
+ Since v0.6 it's possible to do SQL dump backups with L<mysqldump(1)>. Use this if you want to backup InnoDB databases.
+-Option name is C<dump_type>, which takes values C<mysqlhotcopy> (default) and C<mysqldump>.
++Option name is C<dump_type>, which takes values C<mysqlhotcopy> and C<mysqldump> (default).
+ 
+ Since v0.7 you can pass arbitary options to C<mysqlhotcopy> or C<mysqldump>
+ using C<mysqlhotcopy_options> or C<mysqldump_options> respectively. Use this to
+--- bacula-backup-mysql-0.8/bacula-backup-mysql.pl~	2016-05-30 11:25:11.000000000 +0200
++++ bacula-backup-mysql-0.8/bacula-backup-mysql.pl	2018-04-08 08:25:54.428793262 +0200
+@@ -252,7 +252,7 @@
+ 	my $socket = $c->get($cluster, 'socket') || $c->get('client', 'socket');
+ 
+ 	# dump type: mysqlhotcopy, mysqldump
+-	my $dump_type = $c->get($cluster, 'dump_type') || 'mysqlhotcopy';
++	my $dump_type = $c->get($cluster, 'dump_type') || 'mysqldump';
+ 
+ 	my $dbh = BBM::DB->new($user, $password, $host, $socket);
+ 
