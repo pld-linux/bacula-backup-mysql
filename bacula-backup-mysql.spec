@@ -25,7 +25,7 @@ This package contains MySQL backup hook.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 pod2man README.pod -o bacula-backup-mysql.1
